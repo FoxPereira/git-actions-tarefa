@@ -21,21 +21,21 @@ test-api:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-# install Node on the runner
-- name: install Node
-uses: actions/setup-node@v1
-with:
-node-version: "12.x"
+# INstall Node on the runner
+      - name: Install Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
 
-# install the newman comand line utility and also install the html extra reporter
-- name: install newman
-run: |
-npm install -g newman
-npm install -g newman-reporter-htmlextra
-
+# Install the newman command line utility and also install the html extra reporter
+      - name: Install newman
+        run: |
+          npm install -g newman
+          npm install -g newman-reporter-htmlextra
+          
 # Make directory to upload the test results
-- name: Make Directory for results
-run: mkdir -p testResults
+      - name: Make Directory for results
+        run: mkdir -p testResults
 
 # Run the POSTMAN collection
       - name: Run POSTMAN collection on real time
